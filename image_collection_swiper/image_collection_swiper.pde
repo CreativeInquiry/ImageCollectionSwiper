@@ -91,7 +91,7 @@ void draw() {
   background(255);
   
   // stop when you've sorted all the images
-  // just a white screen at the moment
+  // black screen indicates you have finished
   if (currImage >= imageNames.size()) {
      background(0);
      return;
