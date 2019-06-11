@@ -1,4 +1,4 @@
-// Wrinkly Men Neural Net Training Application
+// Image Collection Swiper - A neural net training application
 // June 10, 2019
 // By Cassie
 
@@ -7,12 +7,12 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 StringList imageNames;
-String folderOfImages = "C:\\Users\\schei\\OneDrive\\Desktop\\Summer 2019\\studio\\golan_tinder\\data\\source_images";
+String folderOfImages;
 
-String goodFolder = "C:\\Users\\schei\\OneDrive\\Desktop\\Summer 2019\\studio\\golan_tinder\\data\\good";
-String badFolder = "C:\\Users\\schei\\OneDrive\\Desktop\\Summer 2019\\studio\\golan_tinder\\data\\bad";
+String goodFolder;
+String badFolder;
 
-String logFolder = "C:\\Users\\schei\\OneDrive\\Desktop\\Summer 2019\\studio\\golan_tinder\\data\\image_logs";
+String logFolder;
 
 boolean good = false;
 boolean bad = false;
@@ -32,8 +32,19 @@ String prevImgNewLocation;
 boolean undo = false;
 boolean undoBlock = false;
 
+String dataPath;
+
 void setup() {
   size(1200, 1800);
+  textAlign(CENTER);
+  
+  // initialize data paths, arrays & lists
+  dataPath = dataPath("");
+  folderOfImages = dataPath + "\\source_images";
+  goodFolder = dataPath + "\\good";
+  badFolder = dataPath + "\\bad";
+  logFolder = dataPath + "\\image_logs";
+  
   imageNames = new StringList();
   txtFiles = new StringList();
 
@@ -72,7 +83,6 @@ void setup() {
     else {
       currSession = str(month) + "_" + str(day) + "_" + str(year) + "_session_" + str(session);
     }
-    //println("Current Session: ", currSession);
     loading = false;
   }
 }
@@ -83,7 +93,8 @@ void draw() {
   // stop when you've sorted all the images
   // just a white screen at the moment
   if (currImage >= imageNames.size()) {
-      return;
+     background(0);
+     return;
   }
   
   // undo last choice, return the sorted image to the original source_images folder
@@ -96,7 +107,7 @@ void draw() {
      file.renameTo(new File(folderOfImages + "\\" + prevImgName));
   }
   
-  // load image
+  // load image onto canvas
   String imgString = imageNames.get(currImage);
   img = loadImage(folderOfImages + "\\" + imgString);
   
@@ -158,21 +169,16 @@ void keyPressed() {
   if (key == CODED) {
     if (keyCode == LEFT) {
       bad = true;
-      println("bad");
       next = true;
     }
     else if (keyCode == RIGHT) {
       good = true;
-      println("good");
       next = true;
     }
     else if (keyCode == UP) {
       if (!undoBlock) {
         undo = true;
       }
-      /*else {
-        println("Already undone too much");
-      }*/
     }
   }
 }
