@@ -15,6 +15,6 @@ A tinder-like application to easily accept/reject images, for manually training 
 5. Each time you run the program, a new session is started. Each choice is recorded on a log file specific to each session located in the **image_logs** folder; a *-1* means it's a bad photo, a *1* means it's a good photo.
 6. When you are done with all the photos, the canvas will turn black.
 
-*All of the .gitinclude files are not necessary to the program and may be deleted after cloned/downloaded.)
+*All of the .gitinclude files are not necessary to the program and may be deleted after cloned/downloaded.*
 
 #### Happy swiping!
