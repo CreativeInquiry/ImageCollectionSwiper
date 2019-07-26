@@ -8,7 +8,7 @@ A tinder-like application to easily accept/reject images, for manually training 
 - Arrow keys
 
 ## Instructions
-1. Load all the image data into the **source_images** folder.
+1. Load all your image data into the **source_images** folder (located inside the **data** folder).
 2. Run the Processing sketch.
 3. When an image loads onto the canvas, press the *left arrow* to send it to the **bad** folder; press the *right arrow* to send it to the **good** folder.
 4. Press the *up arrow* to undo the last move. You may only undo the previous choice (you can only go back one level).
